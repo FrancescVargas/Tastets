@@ -118,7 +118,24 @@ mesurar les deformacions que pateixen.
 • Aplicar forces de tracció utilitzant una relació de braç de palanca de 1 a 10
 en el banc d’aplicació de càrregues.
 • Realitzar i analitzar totes les possibles connexions al pont de Wheatstone. 
-','vista/imatges/tastet2.jpg');
+','vista/imatges/tastet2.jpg'),('tastet3','Josep A. Picas','40554565-Q','Dept.de Ciència de materials i enginyeria metal de Ciència de materials i enginyeria metal·lúrgica','AL002 –Lab. Mesures Elèctriques ','Per tal de donar a conèixer les activitats del
+departament es proposa una visita a les seves
+instal·lacions, on es realitzaran diferents assaigs de
+caracterització de materials. Abans de cada assaig
+es farà un breu resum de la funcionalitat del mateix
+i descripció dels paràmetres obtinguts. Els assaigs
+proposats són els següents:
+• Assaig de tracció.
+• Assaig d’impacte mitjançant pèndul
+Charpy.
+• Assaig de duresa.
+• Assaig d’ultramicroduresa.
+Es realitzarà un recorregut per les instal·lacions de
+corrosió i es visitarà la cambra de boira salina i
+s’explicaran els assajos potencio-dinàmics per a
+la determinació de la resistència de materials a la corrosió. S’observaran mostres
+en el microscopi electrònic d’escombrat (SEM) a les instal·lacions del CTVG. 
+','vista/imatges/tastet1.jpg');
 sql;
         
           $res=$conexion->exec($sql); 

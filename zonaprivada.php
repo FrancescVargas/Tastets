@@ -106,22 +106,56 @@
       
 session_start();
  
-    if(isset($_POST["dni"]))
-     {   
+if(isset($_POST["dni"]))
+    {   
         if($_POST['usuari']!=="" && $_POST['dni']!=="" )
         {
           $_SESSION['usuari']=$_POST['usuari'];
          $_SESSION['dni']=$_POST['dni'];   
-        
+
         }
     }
+
+if(!isset($_SESSION['dni']))
+    {
+        echo "<h3>Les credencials no son vàlides</h3>";
+        $_SESSION=[];
+        session_destroy();
+
+    }       
+
+if(isset($_SESSION['dni']))
+    {       
+         try{
+            $con = new PDO('mysql:host=localhost;dbname=tastets', "root"); 
+        }catch(PDOException $e){
+            echo "<div class='error'>".$e->getMessage()."</div>"; 
+            die();
+        }
+        
+        $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."';";
+        $res=$con->query($sel);
+        $res=$res->fetchAll();
+        
+        
+        echo "<h3>Usuari ".$_SESSION["usuari"]."</h3>";
+    
+        if(count($res)>0)
+        {    
             
             
-            
-            
-            
-            
-            
+            echo "<h4>Administració Tastets Propis</4>";
+            foreach($res as $fila)
+            {
+            $sel2="SELECT count(*) from solicituts where solicituts.tastet_id=".$fila["id"].";"; 
+            $res2=$con->query($sel2);
+            $res2=$res2->fetch();
+            echo $fila["nom"]."-->Numero Peticions -->".$res2[0]."<br>";
+            }
+        }
+        else echo "<h4>Ara mateix no ets responsable de cap curs</h4>";
+        
+     }
 ?>
         </div>    
     </body>
