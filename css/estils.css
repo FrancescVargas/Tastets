@@ -1,0 +1,88 @@
+
+body
+    {
+        width: 75%;
+        margin: auto;
+    }
+header
+    {
+        margin-bottom: 30px;
+    }
+header h1
+    {
+        display: inline-block;
+        width: 70%;
+    }
+#imatgeheader
+    {
+        width: 100%;
+    }
+#logo
+    {
+        float: right;
+        margin: 20px 0;
+        width: 30%;
+    }
+#identificador input,button
+    {
+        font-size: 0.6em;
+        text-align: left;  
+    }
+
+
+table,th,td
+{
+border: 1px solid black;
+    }
+#video
+    {
+        float: right;
+    }
+iframe
+    {
+        display: block;
+    }
+#detalls
+    {
+        border:2px solid blue;
+        border-radius: 50px;
+        margin: 10px;
+        width: 50%;
+        text-align: center;
+    }
+#fotodesc
+    {
+        float: right;
+    }
+
+#forminscripcio
+    {
+        float: right;
+
+
+    }
+#formescondido
+    {
+
+        box-shadow: 10px 10px 10px blue;
+        margin-top: 20px;
+        border: 1px solid blue;
+        display:none;
+    }
+#cargarform
+    {
+        float: right;
+
+        margin: 5px;
+    }
+input, label, textarea
+    {
+        margin: 0 5px;
+    }
+/*  --------  privat -----  */
+
+.eliminar
+      {
+          width: 20px;
+      }
+
