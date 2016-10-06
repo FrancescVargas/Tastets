@@ -13,7 +13,7 @@
             <H1>FES UN TAST A L'ENGINYERIA</H1>
             <img id="logo" src="/Francesc/Tastets/vista/imatges/logo2.jpg" alt="logo">
             <img id="imatgeheader" src="/Francesc/Tastets/vista/imatges/capcalera_recurs_8.jpg">
-            <button><a href="sortirzonaprovada.php">Sortir de la zona Privada</a></button><br>
+            <button><a href="sortirzonaprivada.php">Sortir de la zona Privada</a></button><br>
             
             
         </header>
@@ -55,7 +55,7 @@ if(isset($_SESSION['dni']))
         $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."';";
         $res=$con->query($sel);
         $res=$res->fetchAll();
-        echo "<h3>Usuari ".$_SESSION["usuari"]."</h3>";
+        echo "<h3>Pàdina d'inici Usuari ".$_SESSION["usuari"]."</h3>";
         
         if(count($res)>0)
         {    

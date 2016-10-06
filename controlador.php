@@ -43,7 +43,7 @@ $app->post("/publicoment", function($request,$response,$args)
             $con=$this->bd;
             $params=$request->getParsedBody();
             
-            $sql="insert into solicituts(centre,comentari,email,nom_i_cognoms,tastet_id,telefon) values('${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_tastet"]}','${params["telefon"]}');";
+            $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,tastet_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_tastet"]}','${params["telefon"]}');";
             $res=$con->exec($sql);
               
             return $response->withRedirect('/Francesc/Tastets/controlador.php/detallstastet?id='.$params['id_tastet'].'&inscrit=si');

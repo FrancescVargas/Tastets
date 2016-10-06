@@ -37,7 +37,14 @@
         ".$data["descripcio"]."</p></div>";
         
         
-         echo '<div id="forminscripcio">';
+      
+        echo "<div id='detalls'>
+        <h3>Responsable: ".$data["responsable"]."<br>".
+        $data["departament"]."<br>
+        Lloc: ".$data["lloc"]."</h3></div>";
+        
+        
+           echo '<div id="forminscripcio">';
          if(!isset($_GET["inscrit"]))
         { 
                echo '<button id="cargarform" onclick="cargarform()" >Formulari Inscripció</button><br>
@@ -46,6 +53,7 @@
                 <input type="hidden" name="id_tastet" value="'.$data["id"].'">
                 <label>Nom i Cognoms: </label><br><input type="text" name="nomicognoms"><br>
                 <label>Centre: </label><br><input type="text" name="centre"><br>
+                <label>Número d\'estudiants aproximats: </label><br><input type="number" class="inputshort" name="estuaprox"><br>
                 <label>Email: </label><br><input type="email" name="email"><br>
                 <label>Telèfon: </label><br><input type="tel" name="telefon"><br>
                 <label>Comentari: </label><br><textarea rows="5" cols="40" name="comentari"> </textarea><br>
@@ -58,13 +66,6 @@
         {
             echo "<h3>La inscripció s'ha realitzat amb éxit</h3></div>";
         }
-        echo "<div id='detalls'>
-        <h3>Responsable: ".$data["responsable"]."<br>".
-        $data["departament"]."<br>
-        Lloc: ".$data["lloc"]."</h3></div>";
-        
-        
-        
         
         
         

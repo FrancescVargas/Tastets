@@ -32,8 +32,26 @@ header h1
 
 table,th,td
 {
-border: 1px solid black;
+border: 1px solid black;  
     }
+th
+{
+    background-color: cornflowerblue;
+}
+td
+{
+    padding: 0 5px;
+}
+td a
+{
+    text-decoration: none;
+    font-weight: bold;
+}
+tr:hover
+{
+    background-color: antiquewhite;
+    font-size: 1.1em;
+}
 #video
     {
         float: right;
@@ -49,6 +67,7 @@ iframe
         margin: 10px;
         width: 50%;
         text-align: center;
+        clear: both;
     }
 #fotodesc
     {
@@ -58,7 +77,7 @@ iframe
 
 #forminscripcio
     {
-        float: right;
+        float: left;
 
 
     }
@@ -82,8 +101,26 @@ input, label, textarea
     }
 /*  --------  privat -----  */
 
+
 .eliminar
       {
           width: 20px;
       }
-
+.fototastet
+{
+    width: 150px;
+}
+#formmodificar
+{
+    width: 80%;
+    padding: 10px;
+    border: 2px solid blue;
+}
+.inputlong
+{
+    width: 300px;
+}
+.inputshort
+{
+    width: 50px;
+}

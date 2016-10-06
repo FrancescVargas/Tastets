@@ -22,7 +22,7 @@
             <H1>FES UN TAST A L'ENGINYERIA</H1>
             <img id="logo" src="/Francesc/Tastets/vista/imatges/logo2.jpg" alt="logo">
             <img id="imatgeheader" src="/Francesc/Tastets/vista/imatges/capcalera_recurs_8.jpg">
-            <button><a href="sortirzonaprovada.php">Sortir de la zona Privada</a></button><br>
+            <button><a href="sortirzonaprivada.php">Sortir de la zona Privada</a></button><button><a href="zonaprivada.php">Torna a la teva pàgina d'Inici</a></button><br>
             
             
         </header>
@@ -49,7 +49,7 @@
         echo "<h2>Ara pots afegir un Tastet nou</h2>";
         echo "<form id='formmodificar' method='post' action='afegirtastet.php' enctype='multipart/form-data'>";
         
-        echo "<label>Nom</label> <br><input type='text' name='nom'><br>";
+        echo "<label>Nom</label> <br><input class='inputlong' type='text' name='nom'><br>";
         echo "<label>Responsable</label> <br><input type='text' name='responsable' value='".$_GET["responsable"]."'><br>";
         echo "<label>DNI</label> <br><input type='text' name='dni' value='".$_GET["dni"]."' ><br>";
         echo "<label>Departament</label> <br><input type='text' name='departament'><br>";

@@ -22,7 +22,9 @@
             <H1>FES UN TAST A L'ENGINYERIA</H1>
             <img id="logo" src="/Francesc/Tastets/vista/imatges/logo2.jpg" alt="logo">
             <img id="imatgeheader" src="/Francesc/Tastets/vista/imatges/capcalera_recurs_8.jpg">
-            <button><a href="sortirzonaprovada.php">Sortir de la zona Privada</a></button><br>
+            <button><a href="sortirzonaprivada.php">Sortir de la zona Privada</a></button>
+            <button><a href="zonaprivada.php">Torna a la teva pàgina d'Inici</a></button>
+            <br>
             
             
         </header>
@@ -50,7 +52,7 @@
 
                   echo "<form id='formmodificar' method='post' action='editartastet.php' enctype='multipart/form-data'>";
                 echo "<input type='hidden' name='id' value='${res['id']}'><br>";
-                echo "<label>Nom</label> <br><input type='text' name='nom' value='${res['nom']}'><br>";
+                echo "<label>Nom</label> <br><input type='text' class='inputlong' name='nom' value='${res['nom']}'><br>";
                 echo "<label>Responsable</label> <br><input type='text' name='responsable' value='${res['responsable']}'><br>";
                 echo "<label>DNI</label> <br><input type='text' name='dni' value='${res['dni']}'><br>";
                 echo "<label>Departament</label> <br><input type='text' name='departament' value='${res['departament']}'><br>";

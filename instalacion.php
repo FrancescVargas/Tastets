@@ -158,6 +158,7 @@ create table solicituts(
     tastet_id int,
     nom_i_cognoms varchar(40),
     centre varchar(60),
+    estuaprox int,
     email varchar(60),
     telefon varchar(20),
     comentari text,
