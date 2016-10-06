@@ -48,7 +48,8 @@
 
         echo "<h2>Ara pots afegir un Tastet nou</h2>";
         echo "<form id='formmodificar' method='post' action='afegirtastet.php' enctype='multipart/form-data'>";
-        
+            
+        echo "<fieldset><legend>Informació Pública:</legend><br>";
         echo "<label>Nom</label> <br><input class='inputlong' type='text' name='nom'><br>";
         echo "<label>Responsable</label> <br><input type='text' name='responsable' value='".$_GET["responsable"]."'><br>";
         echo "<label>DNI</label> <br><input type='text' name='dni' value='".$_GET["dni"]."' ><br>";
@@ -56,6 +57,19 @@
         echo "<label>Lloc</label> <br><input type='text' name='lloc'><br>";
         echo "<label>Foto</label><br><input type='file' name='foto'><br>";
         echo "<label>Descripció</label><br><textarea id='mytextarea' rows='8' cols='60' name='descripcio' ></textarea><br>";
+        echo "</fieldset>";
+            
+            
+        echo "<fieldset><legend>Informació Interna:</legend><br>";         
+        echo "<label>Comentaris Generals</label> <br><textarea  rows='8' cols='60' name='int_comentari' ></textarea><br>";
+        echo "<label>Nombre Màxim d'Alumnes per Sessió</label> <br><input type='number' name='int_maxim_alu' class='inputshort'><br>";
+        echo "<label>Nivell mínim (o òptim) d&#39;edat o formació per fer el taller:</label> <br><input type='text' name='int_nivell'><br>";
+        echo "<label>Períodes de l&#39;any en que està disponible:</label> <br><input type='text' name='int_dispany'><br>";
+        echo "<label>Quantitat màxima de tallers en un any acadèmic:</label> <br><input type='number' class='inputshort' name='int_max_tallers_any'><br>";
+        echo "<label>Suggeriments i comentaris:</label><br><textarea rows='8' cols='60' name='int_sugg'></textarea><br>";
+        echo "</fieldset>";
+            
+            
         echo "<p><input type='submit' value='afegir'></p></form>";
 
         }
@@ -74,7 +88,7 @@
                             echo "";
 
                         } 
-                        $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`, `foto`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', ".$_POST["dni"].", '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."', '$f');";
+                        $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`, `foto`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."', '$f','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
                    
                     }
 
@@ -83,15 +97,15 @@
                  else
                  {
                     
-                   $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', ".$_POST["dni"].", '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."');";
+                   $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
                      
                  }
                  
                 
             $res=$con->exec($sql); 
-                 header ("Location:zonaprivada.php");
+              //   header ("Location:zonaprivada.php");
              
-            
+            echo $sql;
         }
             
             

@@ -51,6 +51,7 @@
                  echo "<h2>Ara pots editar les dades del tastet ".$res["nom"]."</h2>";
 
                   echo "<form id='formmodificar' method='post' action='editartastet.php' enctype='multipart/form-data'>";
+                 echo "<fieldset><legend>Informació Pública:</legend><br>";
                 echo "<input type='hidden' name='id' value='${res['id']}'><br>";
                 echo "<label>Nom</label> <br><input type='text' class='inputlong' name='nom' value='${res['nom']}'><br>";
                 echo "<label>Responsable</label> <br><input type='text' name='responsable' value='${res['responsable']}'><br>";
@@ -59,6 +60,19 @@
                 echo "<label>Lloc</label> <br><input type='text' name='lloc' value='${res['lloc']}'><br>";
                 echo "<label>Foto</label><br><img alt='foto'  class='fototastet' src='${res['foto']}'><input type='file' name='foto' ><br>";
                 echo "<label>Descripció</label><br><textarea id='mytextarea' rows='8' cols='60' name='descripcio' > ${res['descripcio']}</textarea><br>";
+                echo "</fieldset>";
+                 
+                 
+                 echo "<fieldset><legend>Informació Interna:</legend><br>";
+                
+                echo "<label>Comentaris Generals</label> <br><textarea  rows='8' cols='60' name='int_comentari' > ${res['int_comentari']}</textarea><br>";
+                echo "<label>Nombre Màxim d'Alumnes per Sessió</label> <br><input type='number' name='int_maxim_alu' class='inputshort' value='${res['int_maxim_alu']}'><br>";
+                echo "<label>Nivell mínim (o òptim) d&#39;edat o formació per fer el taller:</label> <br><input type='text' name='int_nivell' value='${res['int_nivell']}'><br>";
+                echo "<label>Períodes de l&#39;any en que està disponible:</label> <br><input type='text' name='int_dispany' value='${res['int_dispany']}'><br>";
+                echo "<label>Quantitat màxima de tallers en un any acadèmic:</label> <br><input type='number' class='inputshort' name='int_max_tallers_any' value='${res['int_max_tallers_any']}'><br>";
+            
+                echo "<label>Suggeriments i comentaris:</label><br><textarea rows='8' cols='60' name='int_sugg' > ${res['int_sugg']}</textarea><br>";
+                echo "</fieldset>";
 
                 echo "<p><input type='submit' value='modificar'></p></form>";
       
@@ -77,18 +91,19 @@
                         {
                             echo "";
                         } 
-                        $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = ".$_POST["dni"].", departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', foto = '".$f."' WHERE tastets.id =".$_POST["id"].";";
+                        $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', foto = '".$f."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE tastets.id =".$_POST["id"].";";
                     }
 
                    
              
                  else
                  {
-                   $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = ".$_POST["dni"].", departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."' WHERE tastets.id =".$_POST["id"].";";
+                   $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE tastets.id =".$_POST["id"].";";
                  }
                  
                  $res=$con->exec($sql); 
                 header ("Location:zonaprivada.php");
+                
             
              }
                 

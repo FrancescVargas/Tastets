@@ -69,7 +69,13 @@ create table tastets(
     departament varchar(40),
     lloc varchar(40),
     descripcio text,
-    foto varchar(140)
+    foto varchar(140),
+    int_comentari text,
+    int_maxim_alu int,
+    int_nivell varchar(20),
+    int_dispany varchar(20),
+    int_max_tallers_any int,
+    int_sugg text
     
 	
 	
