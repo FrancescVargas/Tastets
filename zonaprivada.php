@@ -28,9 +28,9 @@ session_start();
 if(isset($_POST["dni"]))
     {   
     
-        if($_POST['usuari']!=="" && $_POST['dni']!=="" )
+        if(($_POST['perfil']=="A" || $_POST['perfil']=="B")  && $_POST['dni']!=="" )
         {
-          $_SESSION['usuari']=$_POST['usuari'];
+          $_SESSION['perfil']=$_POST['perfil'];
          $_SESSION['dni']=$_POST['dni'];   
 
         }
@@ -38,9 +38,10 @@ if(isset($_POST["dni"]))
 
 if(!isset($_SESSION['dni']))
     {
-        echo "<h3>Les credencials no son vàlides</h3>";
+        echo "<h3>Les credencials no son vàlides</h3><div id='tornar'><a href='/Francesc/Tastets/index.php' title='Tornar a Index'><img src='vista/imatges/home.jpg'></a></div>";
         $_SESSION=[];
         session_destroy();
+        
 
     }       
 
@@ -52,11 +53,17 @@ if(isset($_SESSION['dni']))
             echo "<div class='error'>".$e->getMessage()."</div>"; 
             die();
         }
-        
-        $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."' and tastets.int_borrat='No' ;";
+        if($_SESSION['perfil']=="B")
+        {    
+            $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."' and tastets.int_borrat='No' ;";
+        }
+        if($_SESSION['perfil']=="A")
+        {    
+            $sel="SELECT * from tastets where tastets.int_borrat='No' ;";
+        }
         $res=$con->query($sel);
         $res=$res->fetchAll();
-        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["usuari"]."</h3><h4>Aquí pots administrar o crear els teus tastets</h4>";
+        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["dni"]."</h3><h4>Aquí pots administrar o crear els teus tastets</h4>";
         
         if(count($res)>0)
         {    

@@ -11,20 +11,20 @@
         <header>
             <H1>FES UN TAST A L'ENGINYERIA</H1>
             <img id="logo" src="vista/imatges/logo2.jpg" alt="logo">
-            <img src="vista/imatges/capcalera_recurs_8.jpg">
+            <img id="imatgeheader" src="vista/imatges/capcalera_recurs_8.jpg">
             <form method="post" action="zonaprivada.php" id="identificador">
                 
-                <input type="text" name="usuari" placeholder="usuari">
+                <input type="text" name="perfil" placeholder="perfil">
              
                 <input type="password" name="dni" placeholder="password">
                 <button type="submit">Accedir a la Zona Privada</button><br>
             </form>
-            <H2>El Campus de la UPC a Vilanova i la Geltrú posa a la vostra disposició diferents laboratoris on el professorat especialitzat impartirà una classe pràctica, una demostració, ... on els alumnes podran participar activament.  Inscriviu-vos als tallers que més us interessin!</H2>
+            
             
         </header>
         
     <div id="contenedor">
-        
+        <H2>El Campus de la UPC a Vilanova i la Geltrú posa a la vostra disposició diferents laboratoris on el professorat especialitzat impartirà una classe pràctica, una demostració, ... on els alumnes podran participar activament.  Inscriviu-vos als tallers que més us interessin!</H2>
         <div id="video">
        <iframe width="316" height="178" src="https://www.youtube.com/embed/lpuGRjIfI9A?list=PL2vJzlefC7mDqZAEQllt0XNiZ6JLW7TvI" frameborder="0" allowfullscreen></iframe>
         <img src="vista/imatges/fes-tastet.jpg">

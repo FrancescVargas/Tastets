@@ -15,7 +15,7 @@
             <img id="imatgeheader" src="/Francesc/Tastets/vista/imatges/capcalera_recurs_8.jpg">
             <form method="post" action="/Francesc/Tastets/zonaprivada.php" id="identificador">
                 
-                <input type="text" name="usuari" placeholder="usuari">
+                <input type="text" name="perfil" placeholder="perfil">
              
                 <input type="password" name="dni" placeholder="password">
                 <button type="submit">Accedir a la Zona Privada</button><br>

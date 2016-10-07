@@ -7,11 +7,14 @@ body
 header
     {
         margin-bottom: 30px;
+        background-image: url(../vista/imatges/Fondo-de-pantalla-Abstracto-158.jpg);
+        padding: 0 20px;
     }
 header h1
     {
         display: inline-block;
         width: 70%;
+        color: whitesmoke;
     }
 #imatgeheader
     {
@@ -154,7 +157,10 @@ input, label, textarea, select
         margin: 0 5px;
     }
 /*  --------  privat -----  */
-
+textarea
+{
+    width: 90%;
+}
 #resultado
 {
     
@@ -224,4 +230,13 @@ input, label, textarea, select
     margin: auto;
     padding: 10px;
     background-color: #f5c6df;
+}
+#tornar img
+{
+    width: 100px;
+    margin: auto;
+}
+#tornar
+{
+    text-align: center;
 }
