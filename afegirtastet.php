@@ -64,7 +64,26 @@
         echo "<label>Comentaris Generals</label> <br><textarea  rows='8' cols='60' name='int_comentari' ></textarea><br>";
         echo "<label>Nombre Màxim d'Alumnes per Sessió</label> <br><input type='number' name='int_maxim_alu' class='inputshort'><br>";
         echo "<label>Nivell mínim (o òptim) d&#39;edat o formació per fer el taller:</label> <br><input type='text' name='int_nivell'><br>";
-        echo "<label>Períodes de l&#39;any en que està disponible:</label> <br><input type='text' name='int_dispany'><br>";
+        echo "<label>Períodes de l&#39;any en que està disponible:</label> <br>";
+         
+            
+        $sel2 = "SELECT * FROM dispany";
+                 $res2 = $con->query($sel2);
+                   $res2=$res2->fetchAll();
+                 
+                 echo "<select name='int_dispany'>";
+                 
+                 foreach($res2 as $fila)
+                 {
+                     echo "<option value='".$fila["id"]."'>".$fila["disp"]."</option>";
+                 }
+            
+
+                echo "</select><br>";    
+            
+       
+          
+   
         echo "<label>Quantitat màxima de tallers en un any acadèmic:</label> <br><input type='number' class='inputshort' name='int_max_tallers_any'><br>";
         echo "<label>Suggeriments i comentaris:</label><br><textarea rows='8' cols='60' name='int_sugg'></textarea><br>";
         echo "</fieldset>";
@@ -103,9 +122,8 @@
                  
                 
             $res=$con->exec($sql); 
-              //   header ("Location:zonaprivada.php");
-             
-            echo $sql;
+             header ("Location:zonaprivada.php");
+       
         }
             
             

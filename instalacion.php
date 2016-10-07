@@ -57,6 +57,45 @@
                   echo "<p>Conectados a 'tastets'</p>";
               }
         
+        //creamos tabla dispany
+        
+          $sql="create table dispany(
+	id int primary key auto_increment,
+    disp varchar(20) not null unique)";
+    
+
+       $res=$conexion->exec($sql); 
+          if($res===FALSE)
+              {
+                  echo "<p>No se ha podido crear la tabla dispany</p>";
+                  echo "<p>".$conexion->errorInfo()[2]."</p>";
+              }
+          else
+              {
+                  echo "<p>Tabla dispany creada!!!</p>";
+              }
+         
+        
+        //insertamos en dispany
+        
+         $sql="INSERT INTO `dispany` (`id`, `disp`) values ('1','Intersemestral (Gener-Febrer)'),('2','Setmanes d’exàmens parcials'),('3','Els dies de JPO'),('4','Durant tot l&#39;any'),('5','Altres')";
+
+        
+          $res=$conexion->exec($sql); 
+          if($res===FALSE)
+              {
+                  echo "<p>Error al añadir datos en dispany</p>";
+                  echo "<p>".$conexion->errorInfo()[2]."</p>";
+              }
+          else
+              {
+                  echo "<p>Se han añadido $res filas en la tabla dispany</p>";
+              } 
+           
+        
+        
+        
+        
         
          //creamos tabla tastets
         
@@ -73,10 +112,11 @@ create table tastets(
     int_comentari text,
     int_maxim_alu int,
     int_nivell varchar(20),
-    int_dispany varchar(20),
+    int_dispany int,
     int_max_tallers_any int,
-    int_sugg text
-    
+    int_sugg text,
+    int_borrat varchar(5) default "No",
+    foreign key (int_dispany) references dispany(id) ON DELETE SET NULL ON UPDATE CASCADE
 	
 	
 );

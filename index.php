@@ -32,7 +32,7 @@
         <?php
         
         
-       $sel = "SELECT * from tastets";
+       $sel = "SELECT * from tastets where tastets.int_borrat='No'";
       
         try{
             $con = new PDO('mysql:host=localhost;dbname=tastets', "root"); 

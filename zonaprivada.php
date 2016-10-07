@@ -53,7 +53,7 @@ if(isset($_SESSION['dni']))
             die();
         }
         
-        $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."';";
+        $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."' and tastets.int_borrat='No' ;";
         $res=$con->query($sel);
         $res=$res->fetchAll();
         echo "<h3>Pàgina d'inici Usuari ".$_SESSION["usuari"]."</h3>";
@@ -85,7 +85,7 @@ if(isset($_SESSION['dni']))
 
 
 
-         $sql = "delete from tastets where id='".$_GET['id_borrar']."';";
+         $sql = "UPDATE tastets set int_borrat = 'Si' where id='".$_GET['id_borrar']."';";
          $res=$con->exec($sql); 
          header ("Location:zonaprivada.php");
 
