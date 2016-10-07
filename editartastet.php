@@ -8,9 +8,9 @@
         <script>
             tinymce.init({
                 selector: '#mytextarea'
-                , menubar: "edit tools insert"
-                , plugins: 'lists advlist autolink charmap code textcolor colorpicker emoticons media image paste searchreplace table fullscreen'
-                , toolbar: "undo redo paste copy searchreplace fullscreen | styleselect bold italic forecolor backcolor | code charmap emoticons media image table"
+                , menubar: "edit"
+                , plugins: 'textcolor   paste   fullscreen'
+                , toolbar: "undo redo cut paste copy  fullscreen |  bold italic forecolor backcolor"
             });
         </script>
  <link rel="stylesheet" type="text/css" href="css/estils.css">

@@ -47,16 +47,16 @@
            echo '<div id="forminscripcio">';
          if(!isset($_GET["inscrit"]))
         { 
-               echo '<button id="cargarform" onclick="cargarform()" >Formulari Inscripció</button><br>
-                <form id="formescondido" method="post" action="/Francesc/Tastets/controlador.php/publicoment">
+               
+                echo '<form id="formescondido" method="post" action="/Francesc/Tastets/controlador.php/publicoment">
 
-                <input type="hidden" name="id_tastet" value="'.$data["id"].'">
+                <input type="hidden" name="id_tastet" value="'.$data["id"].'"><h4>Formulari d\'Inscripció</h4><br>
                 <label>Nom i Cognoms: </label><br><input type="text" name="nomicognoms"><br>
                 <label>Centre: </label><br><input type="text" name="centre"><br>
                 <label>Número d\'estudiants aproximats: </label><br><input type="number" class="inputshort" name="estuaprox"><br>
                 <label>Email: </label><br><input type="email" name="email"><br>
                 <label>Telèfon: </label><br><input type="tel" name="telefon"><br>
-                <label>Comentari: </label><br><textarea rows="5" cols="40" name="comentari"> </textarea><br>
+                <label>Comentari: </label><br><textarea rows="5" cols="30" name="comentari"> </textarea><br>
 
                  <p><input type="submit" value="confirmar"></p>
                  </form>
@@ -79,16 +79,7 @@
    
         </div>  
         
-        <script>
-            var i=0;
-            function cargarform()
-            {
-                i+=1;
-                var x=document.getElementById("formescondido");
-                if(i%2!==0) x.style.display="inline-block";
-                else x.style.display="none";
-            }
-        </script>
+       
     
     </body>
 

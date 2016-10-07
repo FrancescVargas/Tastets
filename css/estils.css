@@ -29,7 +29,12 @@ header h1
         text-align: left;  
     }
 
-
+h3
+{
+    text-align: center;
+    color: darkblue;
+    font-size: 1.5em;
+}
 table,th,td
 {
 border: 1px solid black;  
@@ -62,12 +67,14 @@ iframe
     }
 #detalls
     {
-        border:2px solid blue;
+        border: 2px solid blue;
         border-radius: 50px;
         margin: 10px;
         width: 50%;
         text-align: center;
         clear: both;
+        display: inline-block;
+        float: left;
     }
 #fotodesc
     {
@@ -78,7 +85,9 @@ iframe
 #forminscripcio
     {
         float: left;
-
+        width: 45%;
+        vertical-align: text-top;
+        
 
     }
 #formescondido
@@ -87,8 +96,15 @@ iframe
         box-shadow: 10px 10px 10px blue;
         margin-top: 20px;
         border: 1px solid blue;
-        display:none;
+     }
+ #formescondido h4
+    {
+        margin: 0;
+        text-align: center;
     }
+
+        
+   
 #cargarform
     {
         float: right;
@@ -101,7 +117,20 @@ input, label, textarea
     }
 /*  --------  privat -----  */
 
-
+#resultado
+{
+    width: 40%;
+    float: right;
+    margin-left: 20px;
+    margin-top: 40px;
+    
+}
+#resultado span
+{
+    color: darkblue;
+    font-weight: bold;
+    
+}
 .eliminar
       {
           width: 20px;

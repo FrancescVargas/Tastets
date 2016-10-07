@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
         <title>Usuari <?php echo $_POST["dni"]; ?></title>
+        <script src="js/mostrartastet.js"></script>
  <link rel="stylesheet" type="text/css" href="css/estils.css">
     </head>
       
@@ -55,10 +56,11 @@ if(isset($_SESSION['dni']))
         $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."';";
         $res=$con->query($sel);
         $res=$res->fetchAll();
-        echo "<h3>Pàdina d'inici Usuari ".$_SESSION["usuari"]."</h3>";
+        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["usuari"]."</h3>";
         
         if(count($res)>0)
         {    
+            echo "<div id='resultado'></div>";
             echo "<table>
             <caption><h4>Administració Tastets Propis</4></caption>
             <tr><th colspan=4><button id='afegirtastet'><a href='afegirtastet.php?responsable=".$res[0]["responsable"]."&dni=".$res[0]["dni"]."' title='afegir tastet'>Afegir Nou tastet</a></button>
@@ -68,9 +70,10 @@ if(isset($_SESSION['dni']))
             $sel2="SELECT count(*) from solicituts where solicituts.tastet_id=".$fila["id"].";"; 
             $res2=$con->query($sel2);
             $res2=$res2->fetch();
-            echo "<tr><td>".$fila["nom"]."</td><td>".$res2[0]."</td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
+            echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td>".$res2[0]."</td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
             }
             echo "</table>";
+            
         }
         else echo "<h4>Ara mateix no ets responsable de cap curs</h4>";
     
