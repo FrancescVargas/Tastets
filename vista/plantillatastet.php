@@ -41,7 +41,7 @@
         echo "<div id='detalls'>
         <h3>Responsable: ".$data["responsable"]."<br>".
         $data["departament"]."<br>
-        Lloc: ".$data["lloc"]."</h3></div>";
+        Lloc: ".$data["lloc"]."</h3><div><a href='/Francesc/Tastets/index.php' title='Tornar a Index'><img src='/Francesc/Tastets/vista/imatges/home.jpg'></a></div></div>";
         
         
            echo '<div id="forminscripcio">';

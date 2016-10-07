@@ -56,13 +56,13 @@ if(isset($_SESSION['dni']))
         $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."' and tastets.int_borrat='No' ;";
         $res=$con->query($sel);
         $res=$res->fetchAll();
-        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["usuari"]."</h3>";
+        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["usuari"]."</h3><h4>Aquí pots administrar o crear els teus tastets</h4>";
         
         if(count($res)>0)
         {    
-            echo "<div id='resultado'></div>";
+            
             echo "<table>
-            <caption><h4>Administració Tastets Propis</4></caption>
+            
             <tr><th colspan=4><button id='afegirtastet'><a href='afegirtastet.php?responsable=".$res[0]["responsable"]."&dni=".$res[0]["dni"]."' title='afegir tastet'>Afegir Nou tastet</a></button>
             <tr><th>Nom del Tastet</th><th>Peticions</th><th>Eliminar</th><th>Modificar</th></tr>";
             foreach($res as $fila)
@@ -73,22 +73,38 @@ if(isset($_SESSION['dni']))
             echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td>".$res2[0]."</td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
             }
             echo "</table>";
-            
+            echo "<div id='resultado'></div>";
         }
         else echo "<h4>Ara mateix no ets responsable de cap curs</h4>";
     
     
         if(isset ( $_GET['id_borrar']))
         {
-
+            $_SESSION["id_borrar"]=$_GET['id_borrar'];
             // borrar el tastet
+            echo "<div id='confirmacion'><p>Segur que vols borrar aquest tastet?</p>";
+            echo "<form method='post' action='zonaprivada.php'>";
+            echo "<input type='radio' name='confirmar' value='si'>Sí<br>";
+            echo "<input type='radio' name='confirmar' value='no' checked>No<br>";
+            
+            echo "<p><input type='submit' value='confirmar'></p>";
+           
+            echo "</form>";
+            echo "</div>";
+        }
+            
+        if(isset($_POST["confirmar"]))
+        {
+            if($_POST["confirmar"]==="si")
+            {
 
 
-
-         $sql = "UPDATE tastets set int_borrat = 'Si' where id='".$_GET['id_borrar']."';";
-         $res=$con->exec($sql); 
-         header ("Location:zonaprivada.php");
-
+         $sql = "UPDATE tastets set int_borrat = 'Si' where id='".$_SESSION['id_borrar']."';";
+         $res=$con->exec($sql);
+        
+            }
+         
+            header ("Location:zonaprivada.php");
         } 
         
      }
