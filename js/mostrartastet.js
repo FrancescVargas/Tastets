@@ -44,7 +44,16 @@ function mostrarPeticions(d){
 
     
     var res  = document.querySelector("#resultado"); 
-    res.innerHTML=d;
+    var cad="";
+    for(i in d)
+        {
+            for(j in d[i])
+            {
+                cad+=d[i][j];
+            }
+            
+        }
+    res.innerHTML=cad;
      
     
 }
