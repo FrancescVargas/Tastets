@@ -77,14 +77,20 @@ if(isset($_SESSION['dni']))
             $sel2="SELECT count(*) from solicituts where solicituts.tastet_id=".$fila["id"].";"; 
             $res2=$con->query($sel2);
             $res2=$res2->fetch();
-            echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td>".$res2[0]."</td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
+            echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td><a href='javascript:peticio(".$fila["id"].")'>".$res2[0]."</a></td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
             }
             echo "</table>";
             echo "<div id='resultado'></div>";
+            
         }
-        else echo "<h4>Ara mateix no ets responsable de cap curs</h4>";
-    
-    
+        else 
+        {
+            echo "<h4>Ara mateix no ets responsable de cap curs</h4>";
+            echo "<table>
+            
+            <tr><th colspan=4><button id='afegirtastet'><a href='afegirtastet.php?dni=".$_SESSION["dni"]."' title='afegir tastet'>Afegir Nou tastet</a></button>
+            <tr><th>Nom del Tastet</th><th>Peticions</th><th>Eliminar</th><th>Modificar</th></tr></table>";
+        }
         if(isset ( $_GET['id_borrar']))
         {
             $_SESSION["id_borrar"]=$_GET['id_borrar'];

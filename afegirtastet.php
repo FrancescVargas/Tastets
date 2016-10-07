@@ -51,7 +51,7 @@
             
         echo "<fieldset><legend>Informació Pública:</legend><br>";
         echo "<label>Nom</label> <br><input class='inputlong' type='text' name='nom'><br>";
-        echo "<label>Responsable</label> <br><input type='text' name='responsable' value='".$_GET["responsable"]."'><br>";
+        echo "<label>Responsable</label> <br><input type='text' name='responsable'><br>";
         echo "<label>DNI</label> <br><input type='text' name='dni' value='".$_GET["dni"]."' ><br>";
         echo "<label>Departament</label> <br><input type='text' name='departament'><br>";
         echo "<label>Lloc</label> <br><input type='text' name='lloc'><br>";
