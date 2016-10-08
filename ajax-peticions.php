@@ -13,10 +13,25 @@ session_start();
     $sel="SELECT * from solicituts where tastet_id=".$_GET["id"].";";
         $res=$con->query($sel);
         $dat=$res->fetchAll();
-    echo json_encode($dat);
-      
+       if(count($dat)>0)
+       {
+           for($i=0;$i<count($dat);$i++)
+           {
+               foreach($dat[$i] as $clave=>$valor)
+               {
+                   if(!is_numeric($clave)) $dato[$i][$clave]=$valor;
+
+               }
+           }
+           $dat=$dato;
+            echo json_encode($dat);
+
+       }
+      else 
+      {
+          $dat="No Hi han sol.licituts per al tastet";
+          echo json_encode($dat);
+      }
        
    }
-?>
-
 ?>

@@ -63,7 +63,7 @@ if(isset($_SESSION['dni']))
         }
         $res=$con->query($sel);
         $res=$res->fetchAll();
-        echo "<h3>Pàgina d'inici Usuari ".$_SESSION["dni"]."</h3><h4>Aquí pots administrar o crear els teus tastets</h4>";
+        echo "<h2>Pàgina d'inici Usuari ".$_SESSION["dni"]."</h2><h3>Aquí pots administrar o crear els teus tastets</h3>";
         
         if(count($res)>0)
         {    

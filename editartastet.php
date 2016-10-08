@@ -31,6 +31,8 @@
         <div id="contenedor">
           <?php
             session_start();
+            if(isset($_SESSION["dni"]))
+        {
             try
             {
                 $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
@@ -56,8 +58,8 @@
                 echo "<label>Nom</label> <br><input type='text' class='inputlong' name='nom' value='${res['nom']}'><br>";
                 echo "<label>Responsable</label> <br><input type='text' name='responsable' value='${res['responsable']}'><br>";
                 echo "<label>DNI</label> <br><input type='text' name='dni' value='${res['dni']}'><br>";
-                echo "<label>Departament</label> <br><input type='text' name='departament' value='${res['departament']}'><br>";
-                echo "<label>Lloc</label> <br><input type='text' name='lloc' value='${res['lloc']}'><br>";
+                echo "<label>Departament</label> <br><input class='inputlong' type='text' name='departament' value='${res['departament']}'><br>";
+                echo "<label>Lloc</label> <br><input type='text' class='inputlong' name='lloc' value='${res['lloc']}'><br>";
                 echo "<label>Foto</label><br><img alt='foto'  class='fototastet' src='${res['foto']}'><input type='file' name='foto' ><br>";
                 echo "<label>Descripció</label><br><textarea id='mytextarea' rows='8' cols='60' name='descripcio' > ${res['descripcio']}</textarea><br>";
                 echo "</fieldset>";
@@ -126,7 +128,13 @@
             
              }
                 
-            
+            }
+        else
+        {
+            echo "<h3>Les credencials no son vàlides</h3><div id='tornar'><a href='/Francesc/Tastets/index.php' title='Tornar a Index'><img src='vista/imatges/home.jpg'></a></div>";
+            $_SESSION=[];
+            session_destroy();
+        }
             
         ?>    
             

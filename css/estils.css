@@ -32,6 +32,12 @@ header h1
         text-align: left;  
     }
 
+h2
+{
+    text-align: center;
+    color: darkblue;
+    font-size: 1.7em;
+}
 h3
 {
     text-align: center;
@@ -128,7 +134,7 @@ iframe
         float: left;
         width: 45%;
         vertical-align: text-top;
-        
+        margin-bottom: 30px;
 
     }
 #formescondido
@@ -167,25 +173,24 @@ textarea
    
    
     margin-top: 20px;
-    font-size: 0.8em;
+    font-size: 1em;
     
 }
 #tablecargar
 {
     border-collapse: collapse;
     text-align: left;
+    margin-bottom: 30px;
 }
+
 #tablecargar tr:hover
 {
     font-size: 1em;
     background-color: transparent;
 }
 #tablecargar td
-{
-    width: 25%;
-    vertical-align: text-top;
-  
-    
+{   
+    vertical-align: text-top;   
 }
 #tablecargar td img
 {
