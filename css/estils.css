@@ -3,6 +3,7 @@ body
     {
         width: 75%;
         margin: auto;
+        
     }
 header
     {
@@ -58,8 +59,10 @@ table
 table,th,td
 {
 border: 1px solid black;
-    border-collapse: collapse;
-    }
+border-collapse: collapse;
+padding: 0 5px;
+    
+}
 th
 {
     background-color: cornflowerblue;
@@ -182,6 +185,11 @@ textarea
     border-collapse: collapse;
     text-align: left;
     margin-bottom: 30px;
+}
+#tablecargar th
+{
+  
+    text-align: center;
 }
 
 #tablecargar tr:hover
