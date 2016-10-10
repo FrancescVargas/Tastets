@@ -53,6 +53,7 @@ function mostrarPeticions(d){
                     {
                         cad+="<th>"+j+"</th>";
                     }
+        cad+="<th>Detalls Tastet Realitzat</th>"
         cad+="</tr>";
         for(i in d)
             {
@@ -61,6 +62,9 @@ function mostrarPeticions(d){
                 {
                     cad+="<td>"+d[i][j]+"</td>";
                 }
+                if(d[i]["realitzada"]=="1") cad+="<td><a href='editartastetfet.php?id_tastet="+d[i]["tastet_id"]+"&id_solicitut="+d[i]["id"]+"'>Edita Detalls</a></td>";
+                if(d[i]["realitzada"]=="0") cad+="<td><a href='afegirtastetfet.php?id_tastet="+d[i]["tastet_id"]+"&id_solicitut="+d[i]["id"]+"'>Afegeix Detalls</a></td>";
+                
             cad+="</tr>";
             }
         cad+="</table>";

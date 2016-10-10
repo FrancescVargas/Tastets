@@ -208,6 +208,7 @@ create table solicituts(
     email varchar(60),
     telefon varchar(20),
     comentari text,
+    realitzada boolean default false,
     foreign key (tastet_id) references tastets(id) ON DELETE SET NULL ON UPDATE CASCADE
 );
 sql;
@@ -263,7 +264,7 @@ create table estu_tastets(
     nom_estu varchar(40),
     dni_estu varchar(20),
     mail_estu varchar(60),
-    foreign key (tastets_fets_id) references tastets(id) ON UPDATE CASCADE
+    foreign key (tastets_fets_id) references tastets_fets(id) ON UPDATE CASCADE
 );
 sql;
         
