@@ -81,6 +81,10 @@ tr:hover
     background-color: antiquewhite;
     font-size: 1.1em;
 }
+td:hover
+{
+    background-color: rgba(240, 192, 174, 0.79);
+}
 th button a
 {
     text-decoration: none;
@@ -199,7 +203,11 @@ textarea
 }
 #tablecargar td
 {   
-    vertical-align: text-top;   
+    vertical-align: text-top;
+}
+#tablecargar td:hover
+{   
+    background-color: transparent;
 }
 #tablecargar td img
 {

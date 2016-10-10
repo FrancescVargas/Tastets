@@ -225,7 +225,60 @@ sql;
         
         
      
-     
+     // creamos tabla tastets_fets
+        
+           $sql=<<<sql
+create table tastets_fets(
+	id int primary key auto_increment,
+    tastet_id int,
+    solicitut_id int,
+    data date,
+    professor varchar(20),
+    numestu int,
+    comentari text,
+    foreign key (tastet_id) references tastets(id) ON UPDATE CASCADE,
+    foreign key (solicitut_id) references solicituts(id) ON UPDATE CASCADE
+);
+sql;
+        
+          $res=$conexion->exec($sql); 
+          if($res===FALSE)
+              {
+                  echo "<p>No se ha podido crear la tabla tastets_fets</p>";
+                  echo "<p>".$conexion->errorInfo()[2]."</p>";
+              }
+          else
+              {
+                  echo "<p>Tabla tastets_fets creada!!!</p>";
+              }
+      
+        
+        
+       // creamos tabla estu_tastets
+        
+           $sql=<<<sql
+create table estu_tastets(
+	id int primary key auto_increment,
+    tastets_fets_id int,
+    nom_estu varchar(40),
+    dni_estu varchar(20),
+    mail_estu varchar(60),
+    foreign key (tastets_fets_id) references tastets(id) ON UPDATE CASCADE
+);
+sql;
+        
+          $res=$conexion->exec($sql); 
+          if($res===FALSE)
+              {
+                  echo "<p>No se ha podido crear la tabla estu_tastets</p>";
+                  echo "<p>".$conexion->errorInfo()[2]."</p>";
+              }
+          else
+              {
+                  echo "<p>Tabla estu_tastets creada!!!</p>";
+              }
+        
+        
         
          
           
