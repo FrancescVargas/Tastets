@@ -7,7 +7,7 @@ $c=$app->getContainer();
 
 $c["bd"]=function()  
 {
-    $pdo=new PDO("mysql:host=localhost;dbname=tastets","root");
+    $pdo=new PDO("mysql:host=localhost;dbname=activitats","root");
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC); 
     return $pdo;
 };
@@ -15,11 +15,11 @@ $c["bd"]=function()
 
 $c["view"]=new \Slim\Views\PhpRenderer("vista/"); 
 
-$app->get("/detallstastet",function($request,$response,$args)  // sacamos el listado de la búsqueda
+$app->get("/detallsactivitat",function($request,$response,$args)  // sacamos el listado de la búsqueda
           {
               $con=$this->bd; 
               $params=$request->getQueryParams();
-              $sql="SELECT * from tastets where tastets.id=".$params['id'].";";
+              $sql="SELECT * from activitats where activitats.id=".$params['id'].";";
               $res1=$con->query($sql);
              
               $datos= $res1->fetch();
@@ -35,7 +35,7 @@ $app->get("/detallstastet",function($request,$response,$args)  // sacamos el lis
 $app->post("/publicoment", function($request,$response,$args)
           {
                try{
-                $con = new PDO('mysql:host=localhost;dbname=tastets', "root"); 
+                $con = new PDO('mysql:host=localhost;dbname=activitats', "root"); 
             }catch(PDOException $e){
                 echo "<div class='error'>".$e->getMessage()."</div>"; 
                 die();
@@ -43,10 +43,10 @@ $app->post("/publicoment", function($request,$response,$args)
             $con=$this->bd;
             $params=$request->getParsedBody();
             
-            $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,tastet_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_tastet"]}','${params["telefon"]}');";
+            $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,activitat_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_activitat"]}','${params["telefon"]}');";
             $res=$con->exec($sql);
               
-            return $response->withRedirect('/Francesc/Tastets/controlador.php/detallstastet?id='.$params['id_tastet'].'&inscrit=si');
+            return $response->withRedirect('/Francesc/Tastets/controlador.php/detallsactivitat?id='.$params['id_activitat'].'&inscrit=si');
               
               
           });

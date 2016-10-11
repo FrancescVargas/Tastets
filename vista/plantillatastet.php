@@ -50,7 +50,7 @@
                
                 echo '<form id="formescondido" method="post" action="/Francesc/Tastets/controlador.php/publicoment">
 
-                <input type="hidden" name="id_tastet" value="'.$data["id"].'"><h4>Formulari d\'Inscripció</h4><br>
+                <input type="hidden" name="id_activitat" value="'.$data["id"].'"><h4>Formulari d\'Inscripció</h4><br>
                 <label>Nom i Cognoms: </label><br><input type="text" name="nomicognoms"><br>
                 <label>Centre: </label><br><input type="text" name="centre"><br>
                 <label>Número d\'estudiants aproximats: </label><br><input type="number" class="inputshort" name="estuaprox"><br>

@@ -48,18 +48,18 @@ if(!isset($_SESSION['dni']))
 if(isset($_SESSION['dni']))
     {       
          try{
-            $con = new PDO('mysql:host=localhost;dbname=tastets', "root"); 
+            $con = new PDO('mysql:host=localhost;dbname=activitats', "root"); 
         }catch(PDOException $e){
             echo "<div class='error'>".$e->getMessage()."</div>"; 
             die();
         }
         if($_SESSION['perfil']=="B")
         {    
-            $sel="SELECT * from tastets where tastets.dni='".$_SESSION["dni"]."' and tastets.int_borrat='No' ;";
+            $sel="SELECT * from tastets where activitats.dni='".$_SESSION["dni"]."' and activitats.int_borrat='No' ;";
         }
         if($_SESSION['perfil']=="A")
         {    
-            $sel="SELECT * from tastets where tastets.int_borrat='No' ;";
+            $sel="SELECT * from activitats where activitats.int_borrat='No' ;";
         }
         $res=$con->query($sel);
         $res=$res->fetchAll();
@@ -74,7 +74,7 @@ if(isset($_SESSION['dni']))
             <tr><th>Nom del Tastet</th><th>Peticions</th><th>Eliminar</th><th>Modificar</th></tr>";
             foreach($res as $fila)
             {
-            $sel2="SELECT count(*) from solicituts where solicituts.tastet_id=".$fila["id"].";"; 
+            $sel2="SELECT count(*) from solicituts where solicituts.activitat_id=".$fila["id"].";"; 
             $res2=$con->query($sel2);
             $res2=$res2->fetch();
                 
@@ -113,7 +113,7 @@ if(isset($_SESSION['dni']))
             {
 
 
-         $sql = "UPDATE tastets set int_borrat = 'Si' where id='".$_SESSION['id_borrar']."';";
+         $sql = "UPDATE activitats set int_borrat = 'Si' where id='".$_SESSION['id_borrar']."';";
          $res=$con->exec($sql);
         
             }

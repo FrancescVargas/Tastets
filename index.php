@@ -32,10 +32,10 @@
         <?php
         
         
-       $sel = "SELECT * from tastets where tastets.int_borrat='No'";
+       $sel = "SELECT * from activitats where activitats.int_borrat='No'";
       
         try{
-            $con = new PDO('mysql:host=localhost;dbname=tastets', "root"); 
+            $con = new PDO('mysql:host=localhost;dbname=activitats', "root"); 
         }catch(PDOException $e){
             echo "<div class='error'>".$e->getMessage()."</div>"; 
             die();
@@ -45,7 +45,7 @@
         echo "<table><tr><th colspan=2>Llistat de Tastets</th></tr>";
         foreach($res as $fila)
         {
-            echo "<tr><td>".$fila["id"]."</td><td><a href='controlador.php/detallstastet?id=".$fila["id"]."'>".$fila["nom"]."</a></td></tr>";
+            echo "<tr><td>".$fila["id"]."</td><td><a href='controlador.php/detallsactivitat?id=".$fila["id"]."'>".$fila["nom"]."</a></td></tr>";
         }
         echo "</table></div>";
         ?>
