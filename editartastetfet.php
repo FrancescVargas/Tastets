@@ -24,7 +24,7 @@
         {
              try
             {
-                $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
+                $con= new PDO('mysql:host=localhost;dbname=activitats', "root");
             }
         catch(PDOException $e)
             {
@@ -33,14 +33,14 @@
             }
             
         
-        if(isset($_GET["id_tastet"]) && isset($_GET["id_solicitut"]))
+        if(isset($_GET["id_activitat"]) && isset($_GET["id_solicitut"]))
         {    
            
-            $sel = "SELECT * FROM tastets_fets WHERE solicitut_id =".$_GET['id_solicitut'].";";
+            $sel = "SELECT * FROM activitats_fetes WHERE solicitut_id =".$_GET['id_solicitut'].";";
             $res = $con->query($sel);
             $res=$res->fetch();
             
-            $sel2 = "SELECT count(*) as estu FROM estu_tastets WHERE tastets_fets_id =".$res['id'].";";
+            $sel2 = "SELECT count(*) as estu FROM estu_activitats WHERE activitats_fetes_id =".$res['id'].";";
             $res2 = $con->query($sel2);
             
             if($res2)$res2=$res2->fetch();
@@ -51,14 +51,14 @@
             
         echo "<fieldset><legend>Informació del Tastet:</legend><br>";
         echo "<input type='hidden' name='id' value=".$res["id"].">";
-        echo "<label>Id Tastet</label> <br><input type='number' name='tastet_id' value=".$_GET["id_tastet"]." class='inputshort'><br>";
+        echo "<label>Id Tastet</label> <br><input type='number' name='activitat_id' value=".$_GET["id_activitat"]." class='inputshort'><br>";
         echo "<label>Id Solicitut</label> <br><input type='number' name='solicitut_id' value=".$_GET["id_solicitut"]." class='inputshort'><br>";
         echo "<label>Data</label> <br><input type='date' name='data' value=".$res["data"]."><br>";
         echo "<label>Professor</label> <br><input type='text' name='professor' value=".$res["professor"]."><br>";
         echo "<label>Número d'estudiants</label> <br><input type='number' name='numestu' value=".$res["numestu"]."><br>";
         echo "<label>Comentari</label><br><textarea rows='8' cols='60' name='comentari'>".$res["comentari"]."</textarea><br>";
         echo "</fieldset>";  
-        echo "<fieldset><legend>Llistat d'Estudiants</legend><button><a href='llistatestu.php?numestu=".$res["numestu"]."&id_tastetfet=".$res["id"]."'>Emplenar dades dels estudiants</a></button><span> Hi han ".$res2["estu"]." registres introduïts</fieldset>";
+        echo "<fieldset><legend>Llistat d'Estudiants</legend><button><a href='llistatestu.php?numestu=".$res["numestu"]."&id_activitatfeta=".$res["id"]."'>Emplenar dades dels estudiants</a></button><span> Hi han ".$res2["estu"]." registres introduïts</fieldset>";
         echo "<p><input type='submit' value='afegir'></p></form>";
             
        
@@ -69,7 +69,7 @@
             
              
             
-            $sql= "UPDATE tastets_fets SET data = '".$_POST["data"]."', professor = '".$_POST["professor"]."', numestu = ".$_POST["numestu"].", comentari = '".$_POST["comentari"]."' WHERE tastets_fets.id =".$_POST["id"].";";
+            $sql= "UPDATE activitats_fetes SET data = '".$_POST["data"]."', professor = '".$_POST["professor"]."', numestu = ".$_POST["numestu"].", comentari = '".$_POST["comentari"]."' WHERE activitats_fetes.id =".$_POST["id"].";";
             
             $res=$con->exec($sql); 
             

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
-        <title>Afegir tastet petició></title>
+        <title>Afegir tastet fet></title>
         <link rel="stylesheet" type="text/css" href="css/estils.css">
     </head>
       
@@ -24,7 +24,7 @@
         {
              try
             {
-                $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
+                $con= new PDO('mysql:host=localhost;dbname=activitats', "root");
             }
         catch(PDOException $e)
             {
@@ -33,7 +33,7 @@
             }
             
         
-        if(isset($_GET["id_tastet"]) && isset($_GET["id_solicitut"]))
+        if(isset($_GET["id_activitat"]) && isset($_GET["id_solicitut"]))
         {    
            
             
@@ -43,7 +43,7 @@
         echo "<form id='formmodificar' method='post' action='afegirtastetfet.php'>";
             
         echo "<fieldset><legend>Informació del Tastet:</legend><br>";
-        echo "<label>Id Tastet</label> <br><input type='number' name='tastet_id' value=".$_GET["id_tastet"]." class='inputshort'><br>";
+        echo "<label>Id Tastet</label> <br><input type='number' name='activitat_id' value=".$_GET["id_activitat"]." class='inputshort'><br>";
         echo "<label>Id Solicitut</label> <br><input type='number' name='solicitut_id' value=".$_GET["id_solicitut"]." class='inputshort'><br>";
         echo "<label>Data</label> <br><input type='date' name='data'><br>";
         echo "<label>Professor</label> <br><input type='text' name='professor'><br>";
@@ -58,7 +58,7 @@
         {
             
                
-            $sql = "INSERT INTO `tastets_fets` (`tastet_id`, `solicitut_id`, `data`, `professor`, `numestu`, `comentari`) VALUES ('".$_POST["tastet_id"]."', '".$_POST["solicitut_id"]."', '".$_POST["data"]."', '".$_POST["professor"]."', '".$_POST["numestu"]."', '".$_POST["comentari"]."');";
+            $sql = "INSERT INTO `activitats_fetes` (`activitat_id`, `solicitut_id`, `data`, `professor`, `numestu`, `comentari`) VALUES ('".$_POST["activitat_id"]."', '".$_POST["solicitut_id"]."', '".$_POST["data"]."', '".$_POST["professor"]."', '".$_POST["numestu"]."', '".$_POST["comentari"]."');";
             
             $res=$con->exec($sql); 
             

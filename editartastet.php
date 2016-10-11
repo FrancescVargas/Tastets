@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
-        <title>Usuari <?php echo $_POST["dni"]; ?></title>
+        <title>Editar Activitat</title>
         <script src='//cdn.tinymce.com/4/tinymce.min.js'></script>
         <script>
             tinymce.init({
@@ -35,7 +35,7 @@
         {
             try
             {
-                $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
+                $con= new PDO('mysql:host=localhost;dbname=activitats', "root");
             }
         catch(PDOException $e)
             {
@@ -45,7 +45,7 @@
             
              if(isset($_GET['id']))
              {
-                 $sel = "SELECT * FROM tastets WHERE tastets.id =".$_GET['id']."";
+                 $sel = "SELECT * FROM activitats WHERE activitats.id =".$_GET['id']."";
                  $res = $con->query($sel);
                    $res=$res->fetch();
                    
@@ -54,7 +54,8 @@
 
                   echo "<form id='formmodificar' method='post' action='editartastet.php' enctype='multipart/form-data'>";
                  echo "<fieldset><legend>Informació Pública:</legend><br>";
-                echo "<input type='hidden' name='id' value='${res['id']}'><br>";
+                 echo "<input type='hidden' name='id_anterior' value='".$res["id"]."'>";
+                echo "<label>Id</label><input type='number' name='id' value='${res['id']}'><br>";
                 echo "<label>Nom</label> <br><input type='text' class='inputlong' name='nom' value='${res['nom']}'><br>";
                 echo "<label>Responsable</label> <br><input type='text' name='responsable' value='${res['responsable']}'><br>";
                 echo "<label>DNI</label> <br><input type='text' name='dni' value='${res['dni']}'><br>";
@@ -112,16 +113,16 @@
                         {
                             echo "";
                         } 
-                        $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', foto = '".$f."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE tastets.id =".$_POST["id"].";";
+                        $sql= "UPDATE activitats SET id = ".$_POST["id"].", nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', foto = '".$f."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE activitats.id =".$_POST["id_anterior"].";";
                     }
 
                    
              
                  else
                  {
-                   $sql= "UPDATE tastets SET nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE tastets.id =".$_POST["id"].";";
+                   $sql= "UPDATE activitats SET id = ".$_POST["id"].", nom = '".$_POST["nom"]."', responsable = '".$_POST["responsable"]."', dni = '".$_POST["dni"]."', departament = '".$_POST["departament"]."', lloc = '".$_POST["lloc"]."', descripcio = '".$_POST["descripcio"]."', int_comentari= '".$_POST["int_comentari"]."', int_maxim_alu= '".$_POST["int_maxim_alu"]."', int_nivell= '".$_POST["int_nivell"]."', int_dispany= '".$_POST["int_dispany"]."', int_max_tallers_any= '".$_POST["int_max_tallers_any"]."', int_sugg= '".$_POST["int_sugg"]."' WHERE activitats.id =".$_POST["id_anterior"].";";
                  }
-                 
+                
                  $res=$con->exec($sql); 
                 header ("Location:zonaprivada.php");
                 

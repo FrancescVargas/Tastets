@@ -24,7 +24,7 @@
         {
              try
             {
-                $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
+                $con= new PDO('mysql:host=localhost;dbname=activitats', "root");
             }
         catch(PDOException $e)
             {
@@ -33,10 +33,10 @@
             }
             
         
-        if(isset($_GET["numestu"]) && isset($_GET["id_tastetfet"]))
+        if(isset($_GET["numestu"]) && isset($_GET["id_activitatfeta"]))
         {    
            
-            $sel = "SELECT tastets.nom,solicituts.centre,tastets_fets.data,tastets_fets.id from tastets,solicituts,tastets_fets where solicituts.tastet_id=tastets.id and solicituts.id=tastets_fets.solicitut_id and tastets_fets.id=".$_GET['id_tastetfet'].";";
+            $sel = "SELECT activitats.nom,solicituts.centre,activitats_fetes.data,activitats_fetes.id from activitats,solicituts,activitats_fetes where solicituts.activitat_id=activitats.id and solicituts.id=activitats_fetes.solicitut_id and activitats_fetes.id=".$_GET['id_activitatfeta'].";";
             $res = $con->query($sel);
             $res=$res->fetch();
          
@@ -45,7 +45,7 @@
         echo "<form id='formmodificar' method='post' action='llistatestu.php'>";
         for($i=1;$i<=$_GET["numestu"];$i++)
         {
-            echo "<label>".$i."<input type='text' name='nom".$i."' placeholder='nom'><input type='text' name='dni".$i."' placeholder='dni'><input type='text' name='mail".$i."' placeholder='mail'><input type='hidden' value='".$_GET["id_tastetfet"]."' name='id_tastetfet'><input type='hidden' value='".$_GET["numestu"]."' name='numestu'><br>";
+            echo "<label>".$i."<input type='text' name='nom".$i."' placeholder='nom'><input type='text' name='dni".$i."' placeholder='dni'><input type='text' name='mail".$i."' placeholder='mail'><input type='hidden' value='".$_GET["id_activitatfeta"]."' name='id_activitatfeta'><input type='hidden' value='".$_GET["numestu"]."' name='numestu'><br>";
         }
         
          echo "<p><input type='submit' value='acceptar'></p></form>";   
@@ -54,11 +54,11 @@
             
         if(isset($_POST["nom1"]))
         {
-            print_r($_POST);
+            
             for($i=1;$i<=$_POST["numestu"];$i++)
             {
                
-            $sql= "INSERT INTO `estu_tastets` (`tastets_fets_id`, `nom_estu`, `dni_estu`, `mail_estu`) VALUES ('".$_POST["id_tastetfet"]."', '".$_POST["nom$i"]."', '".$_POST["dni$i"]."', '".$_POST["mail$i"]."');";
+            $sql= "INSERT INTO `estu_activitats` (`activitats_fetes_id`, `nom_estu`, `dni_estu`, `mail_estu`) VALUES ('".$_POST["id_activitatfeta"]."', '".$_POST["nom$i"]."', '".$_POST["dni$i"]."', '".$_POST["mail$i"]."');";
             
             $res=$con->exec($sql);
                

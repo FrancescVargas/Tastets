@@ -33,7 +33,7 @@
         {
              try
             {
-                $con= new PDO('mysql:host=localhost;dbname=tastets', "root");
+                $con= new PDO('mysql:host=localhost;dbname=activitats', "root");
             }
         catch(PDOException $e)
             {
@@ -52,6 +52,7 @@
         echo "<form id='formmodificar' method='post' action='afegirtastet.php' enctype='multipart/form-data'>";
             
         echo "<fieldset><legend>Informació Pública:</legend><br>";
+        echo "<label>Id</label> <br><input class='inputshort' type='number' name='id'><br>";
         echo "<label>Nom</label> <br><input class='inputlong' type='text' name='nom'><br>";
         echo "<label>Responsable</label> <br><input type='text' name='responsable'><br>";
         echo "<label>DNI</label> <br><input type='text' name='dni' value='".$_GET["dni"]."' ><br>";
@@ -109,7 +110,7 @@
                             echo "";
 
                         } 
-                        $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`, `foto`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."', '$f','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
+                        $sql = "INSERT INTO `activitats` (`id`,`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`, `foto`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["id"]."','".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."', '$f','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
                    
                     }
 
@@ -118,7 +119,7 @@
                  else
                  {
                     
-                   $sql = "INSERT INTO `tastets` (`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
+                   $sql = "INSERT INTO `activitats` (`id`,`nom`, `responsable`, `dni`, `departament`, `lloc`, `descripcio`,`int_comentari`, `int_maxim_alu`,`int_nivell`,`int_dispany`,`int_max_tallers_any`,`int_sugg`) VALUES ('".$_POST["id"]."','".$_POST["nom"]."', '".$_POST["responsable"]."', '".$_POST["dni"]."', '".$_POST["departament"]."', '".$_POST["lloc"]."', '".$_POST["descripcio"]."','".$_POST["int_comentari"]."', '".$_POST["int_maxim_alu"]."', '".$_POST["int_nivell"]."', '".$_POST["int_dispany"]."', '".$_POST["int_max_tallers_any"]."', '".$_POST["int_sugg"]."');";
                      
                  }
                  
