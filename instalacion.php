@@ -232,7 +232,7 @@ sql;
 create table tastets_fets(
 	id int primary key auto_increment,
     tastet_id int,
-    solicitut_id int,
+    solicitut_id int unique,
     data date,
     professor varchar(20),
     numestu int,

@@ -39,8 +39,13 @@
             $sel = "SELECT * FROM tastets_fets WHERE solicitut_id =".$_GET['id_solicitut'].";";
             $res = $con->query($sel);
             $res=$res->fetch();
-         
-
+            
+            $sel2 = "SELECT count(*) as estu FROM estu_tastets WHERE tastets_fets_id =".$res['id'].";";
+            $res2 = $con->query($sel2);
+            
+            if($res2)$res2=$res2->fetch();
+            if(!$res2)$res2["estu"]=0;
+           
         echo "<h2>Modifica els detalls del Tastet fet el ".$res["data"]."</h2>";
         echo "<form id='formmodificar' method='post' action='editartastetfet.php'>";
             
@@ -52,9 +57,11 @@
         echo "<label>Professor</label> <br><input type='text' name='professor' value=".$res["professor"]."><br>";
         echo "<label>Número d'estudiants</label> <br><input type='number' name='numestu' value=".$res["numestu"]."><br>";
         echo "<label>Comentari</label><br><textarea rows='8' cols='60' name='comentari'>".$res["comentari"]."</textarea><br>";
-        echo "</fieldset>";      
+        echo "</fieldset>";  
+        echo "<fieldset><legend>Llistat d'Estudiants</legend><button><a href='llistatestu.php?numestu=".$res["numestu"]."&id_tastetfet=".$res["id"]."'>Emplenar dades dels estudiants</a></button><span> Hi han ".$res2["estu"]." registres introduïts</fieldset>";
         echo "<p><input type='submit' value='afegir'></p></form>";
-
+            
+       
         }
             
         if(isset($_POST["data"]))
