@@ -61,7 +61,7 @@
         
           $sql="create table dispany(
 	id int primary key auto_increment,
-    disp varchar(20) not null unique)";
+    disp varchar(30) not null unique)";
     
 
        $res=$conexion->exec($sql); 

@@ -55,7 +55,7 @@ if(isset($_SESSION['dni']))
         }
         if($_SESSION['perfil']=="B")
         {    
-            $sel="SELECT * from tastets where activitats.dni='".$_SESSION["dni"]."' and activitats.int_borrat='No' ;";
+            $sel="SELECT * from activitats where activitats.dni='".$_SESSION["dni"]."' and activitats.int_borrat='No' ;";
         }
         if($_SESSION['perfil']=="A")
         {    
@@ -70,15 +70,26 @@ if(isset($_SESSION['dni']))
             
             echo "<table>
             
-            <tr><th colspan=4><button id='afegirtastet'><a href='afegirtastet.php?responsable=".$res[0]["responsable"]."&dni=".$res[0]["dni"]."' title='afegir tastet'>Afegir Nou tastet</a></button>
-            <tr><th>Nom del Tastet</th><th>Peticions</th><th>Eliminar</th><th>Modificar</th></tr>";
+            <tr><th colspan=6><button id='afegirtastet'><a href='afegirtastet.php?responsable=".$res[0]["responsable"]."&dni=".$res[0]["dni"]."' title='afegir tastet'>Afegir Nou tastet</a></button>
+            <tr><th>Nom del Tastet</th><th>Peticions</th><th>Tastets Fets</th><th>Total Alumnes</th><th>Eliminar</th><th>Modificar</th></tr>";
             foreach($res as $fila)
             {
+                
             $sel2="SELECT count(*) from solicituts where solicituts.activitat_id=".$fila["id"].";"; 
             $res2=$con->query($sel2);
             $res2=$res2->fetch();
                 
-            echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td><a href='javascript:peticio(".$fila["id"].")'>".$res2[0]."</a></td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
+            $sel3="SELECT count(*) from activitats_fetes where activitat_id=".$fila["id"].";"; 
+            $res3=$con->query($sel3);
+            $res3=$res3->fetch();
+                
+            
+                
+            $sel4="SELECT count(*) from estu_activitats, activitats_fetes where estu_activitats.activitats_fetes_id=activitats_fetes.id and activitats_fetes.activitat_id=".$fila["id"].";"; 
+            $res4=$con->query($sel4);
+            $res4=$res4->fetch();
+                
+            echo "<tr><td><a href='javascript:cargar(".$fila["id"].")'>".$fila["nom"]."</a></td><td><a href='javascript:peticio(".$fila["id"].")'>".$res2[0]."</a></td><td><a href='javascript:tastetsfets(".$fila["id"].")'>".$res3[0]."</a></td><td><a href='javascript:totalalumnes(".$fila["id"].")'>".$res4[0]."</a></td><td><a title='eliminar tastet' href='zonaprivada.php?id_borrar=".$fila['id']."'><img class='eliminar' alt='eliminar tastet' src='vista/imatges/eliminar.png'></a></td><td><a title='editar tastet' href='editartastet.php?id=".$fila['id']."' ><img class='eliminar' alt='editar tastet' src=vista/imatges/modificar.png ></a></td></tr>";
             }
             echo "</table>";
             echo "<div id='resultado'></div>";

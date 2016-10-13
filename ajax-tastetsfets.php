@@ -10,7 +10,7 @@ session_start();
             die();
         }
        
-    $sel="SELECT activitats.nom,solicituts.* from solicituts,activitats where solicituts.activitat_id=activitats.id and activitat_id=".$_GET["id"].";";
+    $sel="SELECT activitats_fetes.*,solicituts.centre,activitats.nom from activitats_fetes,solicituts,activitats where solicituts.id=activitats_fetes.solicitut_id and activitats.id=activitats_fetes.activitat_id and solicituts.activitat_id=".$_GET["id"].";";
         $res=$con->query($sel);
         $dat=$res->fetchAll();
        if(count($dat)>0)
@@ -29,7 +29,7 @@ session_start();
        }
       else 
       {
-          $dat="No Hi han sol.licituts per al tastet";
+          $dat="No Hi han tastets fets";
           echo json_encode($dat);
       }
        

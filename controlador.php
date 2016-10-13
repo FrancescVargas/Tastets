@@ -46,11 +46,11 @@ $app->post("/publicoment", function($request,$response,$args)
             $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,activitat_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_activitat"]}','${params["telefon"]}');";
             $res=$con->exec($sql);
             
-            $to      = 'fravase76@gmail.com';
-            $subject = 'the subject';
-            $message = 'hello';
-            $headers = 'From: webmaster@example.com' . "\r\n" .
-            'Reply-To: webmaster@example.com' . "\r\n" .
+            $to      = $params["email"];
+            $subject = 'Sol.licitut Tastet EPSEV';
+            $message = $params["nomicognoms"].', gràcies per enviar-nos la sol.licitud per a aquest tastet. En breu ens posarem en contacte amb tu';
+            $headers = 'From: Escola Politècnica Superior d\'Enginyeria de Vilanova i la Geltrú' . "\r\n" .
+            'Reply-To: fravase76@gmail.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
 mail($to, $subject, $message, $headers);

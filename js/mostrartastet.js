@@ -23,6 +23,9 @@ function mostrarLista(d){
 }
 
 
+// ____________________  petició  ----------------------------  //
+
+
 function peticio(id) {
  
 
@@ -48,19 +51,19 @@ function mostrarPeticions(d){
     
     if(typeof d=="object")
     {
-        cad+="<h4>Detalls Peticions</h4><table id='tablecargar'><tr>";
+        cad+="<h4>Peticions del tastet "+d[0]["nom"]+"</h4><table id='tablecargar'><tr>";
          for(j in d[0])
                     {
-                        cad+="<th>"+j+"</th>";
+                       if(j!=="nom" && j!=="id") cad+="<th>"+j+"</th>";
                     }
-        cad+="<th>Detalls Tastet Realitzat</th>"
+        cad+="<th>Detalls Tastet Realitzat</th>";
         cad+="</tr>";
         for(i in d)
             {
                cad+="<tr>";
                 for(j in d[i])
                 {
-                    cad+="<td>"+d[i][j]+"</td>";
+                   if(j!=="nom" && j!=="id") cad+="<td>"+d[i][j]+"</td>";
                 }
                 if(d[i]["realitzada"]=="1") cad+="<td><a href='editartastetfet.php?id_activitat="+d[i]["activitat_id"]+"&id_solicitut="+d[i]["id"]+"'>Edita Detalls</a></td>";
                 if(d[i]["realitzada"]=="0") cad+="<td><a href='afegirtastetfet.php?id_activitat="+d[i]["activitat_id"]+"&id_solicitut="+d[i]["id"]+"'>Afegeix Detalls</a></td>";
@@ -72,6 +75,126 @@ function mostrarPeticions(d){
     if(typeof d=="string") 
     {
         cad+="<h4>No hi han peticions</h4>";
+    }
+    
+    res.innerHTML=cad;
+     
+    
+}
+
+
+// ____________________  TASTETSFETS  ----------------------------  //
+
+
+function tastetsfets(id) {
+ 
+
+ var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState==4){
+            var datos = JSON.parse(ajax.responseText);
+            mostrarTastetsfets(datos);
+        }
+    }
+    ajax.open("get", "ajax-tastetsfets.php?id="+id, true);
+    ajax.send();
+}
+
+
+
+function mostrarTastetsfets(d){
+    
+
+    
+    var res  = document.querySelector("#resultado"); 
+    var cad="";
+    
+    if(typeof d=="object")
+    {
+        cad+="<h4>Detalls Tastets Fets "+d[0]["nom"]+"</h4><table id='tablecargar'><tr>";
+         for(j in d[0])
+                    {
+                        if(j!=="nom" && j!=="id") cad+="<th>"+j+"</th>";
+                    }
+        
+        cad+="</tr>";
+        for(i in d)
+            {
+               cad+="<tr>";
+                for(j in d[i])
+                {
+                   if(j!=="nom" && j!=="id") cad+="<td>"+d[i][j]+"</td>";
+                }
+                
+                
+            cad+="</tr>";
+            }
+        cad+="</table>";
+    }
+    if(typeof d=="string") 
+    {
+        cad+="<h4>No hi han Tastets Fets</h4>";
+    }
+    
+    res.innerHTML=cad;
+     
+    
+}
+
+
+
+
+// ____________________  totalalumnes  ----------------------------  //
+
+
+function totalalumnes(id) {
+ 
+
+ var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function(){
+        if(ajax.readyState==4){
+            var datos = JSON.parse(ajax.responseText);
+            mostrarAlumnesTotals(datos);
+        }
+    }
+    ajax.open("get", "ajax-totalalumnes.php?id="+id, true);
+    ajax.send();
+}
+
+
+
+function mostrarAlumnesTotals(d){
+    
+
+    
+    var res  = document.querySelector("#resultado"); 
+    var cad="";
+    
+    if(typeof d=="object")
+    {
+        cad+="<h4>Alumnes totals Tastet "+d[0]["nom"]+"</h4><table id='tablecargar'><tr>";
+         for(j in d[0])
+                    {
+                        if(j!=="nom" && j!=="id") cad+="<th>"+j+"</th>";
+                    }
+        
+        cad+="</tr>";
+        for(i in d)
+            {
+               cad+="<tr>";
+                for(j in d[i])
+                {
+                   if(j!=="nom" && j!=="id") cad+="<td>"+d[i][j]+"</td>";
+                }
+                
+                
+            cad+="</tr>";
+            }
+        cad+="</table>";
+    }
+    if(typeof d=="string") 
+    {
+        cad+="<h4>No hi han Alumnes del Tastet</h4>";
     }
     
     res.innerHTML=cad;
