@@ -20,6 +20,7 @@
         <div id="contenedor">
           <?php
             session_start();
+            require("anyaca.php");
             if(isset($_SESSION["dni"]))
         {
              try
@@ -56,9 +57,9 @@
             
         if(isset($_POST["data"]))
         {
-            
+            $anyaca=anyaca($_POST["data"]);
                
-            $sql = "INSERT INTO `activitats_fetes` (`activitat_id`, `solicitut_id`, `data`, `professor`, `numestu`, `comentari`) VALUES ('".$_POST["activitat_id"]."', '".$_POST["solicitut_id"]."', '".$_POST["data"]."', '".$_POST["professor"]."', '".$_POST["numestu"]."', '".$_POST["comentari"]."');";
+            $sql = "INSERT INTO `activitats_fetes` (`activitat_id`, `solicitut_id`, `data`, `professor`, `numestu`, `comentari`,`anyaca`) VALUES ('".$_POST["activitat_id"]."', '".$_POST["solicitut_id"]."', '".$_POST["data"]."', '".$_POST["professor"]."', '".$_POST["numestu"]."', '".$_POST["comentari"]."', '".$anyaca."');";
             
             $res=$con->exec($sql); 
             
@@ -67,6 +68,7 @@
             $res2=$con->exec($sql2);
             
             header ("Location:zonaprivada.php");
+            
 
         }
 

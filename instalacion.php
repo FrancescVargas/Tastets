@@ -234,6 +234,7 @@ create table activitats_fetes(
     activitat_id int,
     solicitut_id int unique,
     data date,
+    anyaca int,
     professor varchar(20),
     numestu int,
     comentari text,

@@ -20,6 +20,7 @@
         <div id="contenedor">
           <?php
             session_start();
+            require("anyaca.php");
             if(isset($_SESSION["dni"]))
         {
              try
@@ -68,8 +69,8 @@
         {
             
              
-            
-            $sql= "UPDATE activitats_fetes SET data = '".$_POST["data"]."', professor = '".$_POST["professor"]."', numestu = ".$_POST["numestu"].", comentari = '".$_POST["comentari"]."' WHERE activitats_fetes.id =".$_POST["id"].";";
+            $anyaca=anyaca($_POST["data"]);
+            $sql= "UPDATE activitats_fetes SET data = '".$_POST["data"]."', professor = '".$_POST["professor"]."', numestu = ".$_POST["numestu"].", comentari = '".$_POST["comentari"]."', anyaca=".$anyaca." WHERE activitats_fetes.id =".$_POST["id"].";";
             
             $res=$con->exec($sql); 
             

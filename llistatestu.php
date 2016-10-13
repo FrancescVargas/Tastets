@@ -57,11 +57,12 @@
             
             for($i=1;$i<=$_POST["numestu"];$i++)
             {
-               
-            $sql= "INSERT INTO `estu_activitats` (`activitats_fetes_id`, `nom_estu`, `dni_estu`, `mail_estu`) VALUES ('".$_POST["id_activitatfeta"]."', '".$_POST["nom$i"]."', '".$_POST["dni$i"]."', '".$_POST["mail$i"]."');";
-            
-            $res=$con->exec($sql);
-               
+            if($_POST["dni$i"]!=="")
+                {
+                $sql= "INSERT INTO `estu_activitats` (`activitats_fetes_id`, `nom_estu`, `dni_estu`, `mail_estu`) VALUES ('".$_POST["id_activitatfeta"]."', '".$_POST["nom$i"]."', '".$_POST["dni$i"]."', '".$_POST["mail$i"]."');";
+
+                $res=$con->exec($sql);
+                }
             }
             
             

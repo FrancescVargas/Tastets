@@ -45,6 +45,15 @@ $app->post("/publicoment", function($request,$response,$args)
             
             $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,activitat_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_activitat"]}','${params["telefon"]}');";
             $res=$con->exec($sql);
+            
+            $to      = 'fravase76@gmail.com';
+            $subject = 'the subject';
+            $message = 'hello';
+            $headers = 'From: webmaster@example.com' . "\r\n" .
+            'Reply-To: webmaster@example.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers);
               
             return $response->withRedirect('/Francesc/Tastets/controlador.php/detallsactivitat?id='.$params['id_activitat'].'&inscrit=si');
               
