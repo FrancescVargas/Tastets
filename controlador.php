@@ -24,7 +24,7 @@ $app->get("/detallstastet",function($request,$response,$args)  // sacamos el lis
              
               $datos= $res1->fetch();
               
-              
+              $datos["ruta"]=$request->getUri()->getBasePath();
              
               $response=$this->view->render($response,"plantillatastet.php",$datos); 
               return $response;
@@ -45,8 +45,8 @@ $app->post("/publicoment", function($request,$response,$args)
             
             $sql="insert into solicituts(estuaprox,centre,comentari,email,nom_i_cognoms,tastet_id,telefon) values('${params["estuaprox"]}','${params["centre"]}','${params["comentari"]}','${params["email"]}','${params["nomicognoms"]}','${params["id_tastet"]}','${params["telefon"]}');";
             $res=$con->exec($sql);
-              
-            return $response->withRedirect('/Francesc/Tastets/controlador.php/detallstastet?id='.$params['id_tastet'].'&inscrit=si');
+            $datos=$request->getUri()->getBasePath();
+            return $response->withRedirect($datos.'/detallstastet?id='.$params['id_tastet'].'&inscrit=si');
               
               
           });
