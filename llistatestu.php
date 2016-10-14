@@ -45,7 +45,7 @@
         echo "<form id='formmodificar' method='post' action='llistatestu.php'>";
         for($i=0;$i<=$_GET["numestu"];$i++)
         {
-            echo "<label>".$i."<input type='text' name='nom".$i."' placeholder='nom'><input type='text' name='dni".$i."' placeholder='dni'><input type='text' name='mail".$i."' placeholder='mail'><input type='hidden' value='".$_GET["id_activitatfeta"]."' name='id_activitatfeta'><input type='hidden' value='".$_GET["numestu"]."' name='numestu'><br>";
+            echo "<input type='text' name='nom".$i."' placeholder='nom'><input type='text' name='dni".$i."' placeholder='dni'><input type='text' name='mail".$i."' placeholder='mail'><input type='hidden' value='".$_GET["id_activitatfeta"]."' name='id_activitatfeta'><input type='hidden' value='".$_GET["numestu"]."' name='numestu'><br>";
         }
         
          echo "<p><input type='submit' value='acceptar'></p></form>";   
