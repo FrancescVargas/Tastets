@@ -43,7 +43,7 @@
 
         echo "<h2>Emplena la taula amb els assistents del centre ".$res["centre"]." al Tastet de ".$res["nom"]." realitzat el dia ".$res["data"]."</h2>";
         echo "<form id='formmodificar' method='post' action='llistatestu.php'>";
-        for($i=1;$i<=$_GET["numestu"];$i++)
+        for($i=0;$i<=$_GET["numestu"];$i++)
         {
             echo "<label>".$i."<input type='text' name='nom".$i."' placeholder='nom'><input type='text' name='dni".$i."' placeholder='dni'><input type='text' name='mail".$i."' placeholder='mail'><input type='hidden' value='".$_GET["id_activitatfeta"]."' name='id_activitatfeta'><input type='hidden' value='".$_GET["numestu"]."' name='numestu'><br>";
         }
@@ -52,10 +52,10 @@
        
         }
             
-        if(isset($_POST["nom1"]))
+        if(isset($_POST["dni0"]))
         {
             
-            for($i=1;$i<=$_POST["numestu"];$i++)
+            for($i=0;$i<=$_POST["numestu"];$i++)
             {
             if($_POST["dni$i"]!=="")
                 {
@@ -64,7 +64,11 @@
                 $res=$con->exec($sql);
                 }
             }
-            
+            $sql="select count(*) as numestu from estu_activitats where activitats_fetes_id=".$_POST["id_activitatfeta"].";";
+            $res2=$con->query($sql);
+            $res2=$res2->fetch();
+            $sql2="UPDATE activitats_fetes SET numestu =".$res2["numestu"]." where id=".$_POST["id_activitatfeta"].";";
+            $res3=$con->exec($sql2);
             
             header ("Location:zonaprivada.php");
 

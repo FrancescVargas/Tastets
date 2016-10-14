@@ -59,7 +59,10 @@
         echo "<label>Número d'estudiants</label> <br><input type='number' name='numestu' value=".$res["numestu"]."><br>";
         echo "<label>Comentari</label><br><textarea rows='8' cols='60' name='comentari'>".$res["comentari"]."</textarea><br>";
         echo "</fieldset>";  
-        echo "<fieldset><legend>Llistat d'Estudiants</legend><button><a href='llistatestu.php?numestu=".$res["numestu"]."&id_activitatfeta=".$res["id"]."'>Emplenar dades dels estudiants</a></button><span> Hi han ".$res2["estu"]." registres introduïts</fieldset>";
+        echo "<fieldset><legend>Llistat d'Estudiants</legend><button><a href='llistatestu.php?numestu=".$res["numestu"]."&id_activitatfeta=".$res["id"]."'>Afegir estudiants</a></button><span> Hi han ".$res2["estu"]." registres introduïts</span>";
+        if($res2["estu"]>0) echo "<button><a href='editallistatestu.php?id_activitatfeta=".$res["id"]."'>Editar estudiants</a></button>";
+        echo "</fieldset>";
+        
         echo "<p><input type='submit' value='afegir'></p></form>";
             
        
