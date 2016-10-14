@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="es">
     <head>
+         <?php $rest = substr($data["ruta"], 0, -15); ?>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width; initial-scale=1.0">
         <title>Detalls Tastet</title>
-        <link rel="stylesheet" type="text/css" href="/Francesc/Tastets/css/estils.css">
+        <?php echo '<link rel="stylesheet" type="text/css" href="'.$rest.'css/estils.css">'; ?>
     </head>
       
     <body>
           
       <header>
             <H1>FES UN TAST A L'ENGINYERIA</H1>
-            <img id="logo" src="/Francesc/Tastets/vista/imatges/logo2.jpg" alt="logo">
-            <img id="imatgeheader" src="/Francesc/Tastets/vista/imatges/capcalera_recurs_8.jpg">
-            <form method="post" action="/Francesc/Tastets/zonaprivada.php" id="identificador">
+            <?php echo '<img id="logo" src="'.$rest.'vista/imatges/logo2.jpg" alt="logo">'; ?>
+            <?php echo '<img id="imatgeheader" src="'.$rest.'vista/imatges/capcalera_recurs_8.jpg">'; ?>
+            <?php echo '<form method="post" action="'.$rest.'zonaprivada.php" id="identificador">'; ?>
                 
                 <input type="text" name="perfil" placeholder="perfil">
              
                 <input type="password" name="dni" placeholder="password">
                 <button type="submit">Accedir a la Zona Privada</button><br>
-            </form>
+            <?php echo '</form>'; ?>
             
         </header>
         
@@ -48,7 +49,7 @@
          if(!isset($_GET["inscrit"]))
         { 
                
-                echo '<form id="formescondido" method="post" action="/Francesc/Tastets/controlador.php/publicoment">
+                echo '<form id="formescondido" method="post" action="'.$data["ruta"].'/publicoment">
 
                 <input type="hidden" name="id_activitat" value="'.$data["id"].'"><h4>Formulari d\'Inscripció</h4><br>
                 <label>Nom i Cognoms: </label><br><input type="text" name="nomicognoms"><br>

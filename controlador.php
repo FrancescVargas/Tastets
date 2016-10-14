@@ -24,7 +24,7 @@ $app->get("/detallsactivitat",function($request,$response,$args)  // sacamos el 
              
               $datos= $res1->fetch();
               
-              
+              $datos["ruta"]=$request->getUri()->getBasePath();
              
               $response=$this->view->render($response,"plantillatastet.php",$datos); 
               return $response;
@@ -54,8 +54,8 @@ $app->post("/publicoment", function($request,$response,$args)
             'X-Mailer: PHP/' . phpversion();
 
 mail($to, $subject, $message, $headers);
-              
-            return $response->withRedirect('/Francesc/Tastets/controlador.php/detallsactivitat?id='.$params['id_activitat'].'&inscrit=si');
+              $datos=$request->getUri()->getBasePath();
+            return $response->withRedirect($datos.'/detallsactivitat?id='.$params['id_activitat'].'&inscrit=si');
               
               
           });
